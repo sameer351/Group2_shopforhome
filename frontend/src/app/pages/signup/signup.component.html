@@ -1,0 +1,63 @@
+
+<h1 align="center" class="display-4 mb-5">Sign Up</h1>
+<div style="width:40%; margin: 25px auto" >
+  <form [formGroup] = "registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label><b>Email address</b></label>
+      <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter email" email required autofocus  formControlName="email">
+      <div  *ngIf="u.email.invalid && (u.email.dirty || u.email.touched)" >
+          <div *ngIf="u.email.errors.required" >
+              Email is required.
+          </div>
+          <div *ngIf="u.email.errors.email">
+              Invalid Email.
+          </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label><b>Name</b></label>
+      <input  type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your name" required formControlName="name">
+        <div  *ngIf="u.name.invalid && (u.name.dirty || u.name.touched)">
+            <div *ngIf="u.name.errors.required">
+                Name is required.
+            </div>
+            <div *ngIf="u.name.errors.minlength">
+                Name must be at least 3 characters long.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label><b>Password</b></label>
+      <input   type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" minlength="3" required formControlName="password">
+        <div  *ngIf="u.password.invalid && (u.password.dirty || u.password.touched)">
+            <div *ngIf="u.password.errors.required">
+                Password is required.
+            </div>
+            <div *ngIf="u.password.errors.minlength">
+                Password must be at least 3 characters long.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label><b>Phone</b></label>
+      <input type="text" class="form-control form-control-lg" id="phone" name="phone" placeholder="Phone" required formControlName="phone" >
+        <div  *ngIf="u.phone.invalid && (u.phone.dirty || u.phone.touched)">
+            <div *ngIf="u.phone.errors.required">
+                Phone is required.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label><b>Address</b></label>
+      <input type="text" class="form-control form-control-lg" id="address" name="address" placeholder="Address" required formControlName="address">
+        <div  *ngIf="u.address.invalid && (u.address.dirty || u.address.touched)">
+            <div *ngIf="u.address.errors.required">
+                Address is required.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!registerForm.valid" >Sign Up</button>
+    </div>
+  </form>
+</div>
